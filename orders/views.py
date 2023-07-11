@@ -31,6 +31,7 @@ def order_create(request):
                 
             # clear the cart
             cart.clear()
+            
             # launch asynchronous task
             order_created.delay(order.id)
            

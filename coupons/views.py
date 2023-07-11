@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 from .models import Coupon
@@ -17,6 +17,7 @@ def coupon_apply(request):
                                         valid_to__gte=now, 
                                         active=True)
             request.session['coupon_id'] = coupon.id
+            
         except Coupon.DoesNotExist:
             request.session['coupon_id'] = None
             
